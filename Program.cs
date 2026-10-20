@@ -161,10 +161,18 @@ namespace LINQ_02
             #endregion
 
             #region 20. Concatenate the first 3 product names with the first 3 customer company names into a single sequence.
-            var result = Source.ProductList.Take(3).Select(P => P.ProductName)
-                                .Concat(Source.CustomerList.Take(3).Select(C => C.CustomerName));
+            //var result = Source.ProductList.Take(3).Select(P => P.ProductName)
+            //                    .Concat(Source.CustomerList.Take(3).Select(C => C.CustomerName));
 
-            Console.WriteLine(string.Join(", ", result));
+            //Console.WriteLine(string.Join(", ", result));
+
+            #endregion
+
+            #region 21. Pair each product with a customer (by position) and produce a string "ProductName sold to CompanyName".
+            var result = Source.ProductList.Zip(Source.CustomerList, (P, C) => $"{P.ProductName} sold to {C.CustomerName}");
+
+            foreach (var item in result)
+                Console.WriteLine(item);
             #endregion
 
             //foreach (var item in result)
