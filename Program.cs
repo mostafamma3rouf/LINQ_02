@@ -46,17 +46,25 @@ namespace LINQ_02
             #endregion
 
             #region 7. Group products by Category and project only product names per group
-            var result = Source.ProductList.GroupBy(P => P.Category);
+            //var result = Source.ProductList.GroupBy(P => P.Category);
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine($"{item.Key}: ");
+            //    foreach (var product in item)
+            //        Console.WriteLine($"    {product.ProductName}");
+            //}
+            #endregion
+
+            #region 8. Find all categories that have MORE THAN 3 products
+            var result = Source.ProductList.GroupBy(P => P.Category)
+                                           .Where(M => M.Count() > 3)
+                                           .Select(M => M.Key);
+            #endregion
+
 
             foreach (var item in result)
-            {
-                Console.WriteLine($"{item.Key}: ");
-                foreach (var product in item)
-                    Console.WriteLine($"    {product.ProductName}");
-            }
-            #endregion
-            //foreach (var item in result)
-            //    Console.WriteLine(item);
+                Console.WriteLine(item);
         }
     }
 }
