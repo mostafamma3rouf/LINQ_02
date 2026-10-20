@@ -1,5 +1,6 @@
-﻿using LINQ_02.Models;
-using LINQ_02.DataSource;
+﻿using LINQ_02.DataSource;
+using LINQ_02.Models;
+using System.Diagnostics.Metrics;
 
 namespace LINQ_02
 {
@@ -57,9 +58,23 @@ namespace LINQ_02
             #endregion
 
             #region 8. Find all categories that have MORE THAN 3 products
-            var result = Source.ProductList.GroupBy(P => P.Category)
-                                           .Where(M => M.Count() > 3)
-                                           .Select(M => M.Key);
+            //var result = Source.ProductList.GroupBy(P => P.Category)
+            //                               .Where(M => M.Count() > 3)
+            //                               .Select(M => M.Key);
+
+            #endregion
+
+            #region 9. Using QUERY SYNTAX, group customers by Country, and for each group select { Country, Count, TotalOrderValue }.
+            var result = from P in Source.CustomerList
+                         group P by P.Country
+                         into G
+                         select new
+                         {
+                             Country = G.Key,
+                             Count = G.Count(),
+                             TotalOrderValue = G.Sum(T => T.Orders.Sum(O => O.Total))
+                         };
+
             #endregion
 
 
