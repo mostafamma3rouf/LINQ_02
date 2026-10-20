@@ -21,13 +21,16 @@ namespace LINQ_02
             #endregion
 
             #region 3. Take products from the list as long as Their UnitPrice is less than $25(list is ordered by price).
-            var result = Source.ProductList.OrderBy(P => P.UnitPrice)
-                                           .TakeWhile(P => P.UnitPrice < 25);
+            //var result = Source.ProductList.OrderBy(P => P.UnitPrice)
+            //                               .TakeWhile(P => P.UnitPrice < 25);
             #endregion
 
-
-            foreach (var item in result)
-                Console.WriteLine(item);
+            #region 4. Check if ALL products in the "Seafood" category are in stock
+            var result = Source.ProductList.All(P => P.Category == "Seafood" && P.UnitsInStock > 0);
+            Console.WriteLine(result);
+            #endregion
+            //foreach (var item in result)
+            //    Console.WriteLine(item);
         }
     }
 }
