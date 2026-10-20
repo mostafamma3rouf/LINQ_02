@@ -26,9 +26,17 @@ namespace LINQ_02
             #endregion
 
             #region 4. Check if ALL products in the "Seafood" category are in stock
-            var result = Source.ProductList.All(P => P.Category == "Seafood" && P.UnitsInStock > 0);
-            Console.WriteLine(result);
+            //var result = Source.ProductList.All(P => P.Category == "Seafood" && P.UnitsInStock > 0);
+            //Console.WriteLine(result);
+
             #endregion
+
+            #region 5. Check if the ID list contains 9 int[] ids = { 3, 9, 13, 18 };
+            int[] ids = { 3, 9, 13, 18 };
+            Console.WriteLine($"Contains 9: {ids.Contains(9)}");
+
+            #endregion
+
             //foreach (var item in result)
             //    Console.WriteLine(item);
         }
