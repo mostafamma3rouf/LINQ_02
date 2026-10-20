@@ -119,14 +119,20 @@ namespace LINQ_02
             #endregion
 
             #region 15. Build a Dictionary<int, Product> keyed by ProductID. Then retrieve and print the product with ID = 18.
-            Dictionary<int, Product> productDictionary = Source.ProductList.ToDictionary(P => P.ProductID);
+            //Dictionary<int, Product> productDictionary = Source.ProductList.ToDictionary(P => P.ProductID);
 
-            if (productDictionary.TryGetValue(18, out Product product))
-                Console.WriteLine($"Product with ID 18: {product.ProductName}");
-            
-            else
-                Console.WriteLine("Product with ID 18 was not found.");
-            
+            //if (productDictionary.TryGetValue(18, out Product product))
+            //    Console.WriteLine($"Product with ID 18: {product.ProductName}");
+
+            //else
+            //    Console.WriteLine("Product with ID 18 was not found.");
+
+            #endregion
+
+            #region 16. Get the first product whose price is greater than $50.
+            var result = Source.ProductList.First(P => P.UnitPrice > 50);
+            Console.WriteLine(result);
+
             #endregion
 
             //foreach (var item in result)
