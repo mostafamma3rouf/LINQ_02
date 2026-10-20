@@ -1,6 +1,7 @@
 ﻿using LINQ_02.DataSource;
 using LINQ_02.Models;
 using System.Diagnostics.Metrics;
+using System.Drawing;
 
 namespace LINQ_02
 {
@@ -110,15 +111,26 @@ namespace LINQ_02
             #endregion
 
             #region 14. Find countries that appear in list1 but NOT in list2 (case -insensitive).
-            string[] list1 = { "Germany", "France", "UK", "Spain" };
-            string[] list2 = { "france", "SPAIN", "Italy" };
+            //string[] list1 = { "Germany", "France", "UK", "Spain" };
+            //string[] list2 = { "france", "SPAIN", "Italy" };
 
-            var result = list1.Except(list2, StringComparer.OrdinalIgnoreCase).ToList();
+            //var result = list1.Except(list2, StringComparer.OrdinalIgnoreCase).ToList();
 
             #endregion
 
-            foreach (var item in result)
-                Console.WriteLine(item);
+            #region 15. Build a Dictionary<int, Product> keyed by ProductID. Then retrieve and print the product with ID = 18.
+            Dictionary<int, Product> productDictionary = Source.ProductList.ToDictionary(P => P.ProductID);
+
+            if (productDictionary.TryGetValue(18, out Product product))
+                Console.WriteLine($"Product with ID 18: {product.ProductName}");
+            
+            else
+                Console.WriteLine("Product with ID 18 was not found.");
+            
+            #endregion
+
+            //foreach (var item in result)
+            //    Console.WriteLine(item);
         }
     }
 }
