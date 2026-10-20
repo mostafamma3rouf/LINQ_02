@@ -32,10 +32,19 @@ namespace LINQ_02
             #endregion
 
             #region 5. Check if the ID list contains 9 int[] ids = { 3, 9, 13, 18 };
-            int[] ids = { 3, 9, 13, 18 };
-            Console.WriteLine($"Contains 9: {ids.Contains(9)}");
+            //int[] ids = { 3, 9, 13, 18 };
+            //Console.WriteLine($"Contains 9: {ids.Contains(9)}");
 
             #endregion
+
+            #region 6. Group all products by Category and print each group with its product count.
+            var result = Source.ProductList.GroupBy(P => P.Category);
+
+            foreach (var item in result)
+                Console.WriteLine($"{item.Key} - Product Count: {item.Count()}");
+            
+            #endregion
+
 
             //foreach (var item in result)
             //    Console.WriteLine(item);
