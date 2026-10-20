@@ -130,10 +130,21 @@ namespace LINQ_02
             #endregion
 
             #region 16. Get the first product whose price is greater than $50.
-            var result = Source.ProductList.First(P => P.UnitPrice > 50);
-            Console.WriteLine(result);
+            //var result = Source.ProductList.First(P => P.UnitPrice > 50);
+            //Console.WriteLine(result);
 
             #endregion
+
+            #region 17. Try to get the first product with a price > $500. it returns null instead of throwing.
+            var result = Source.ProductList.FirstOrDefault(P => P.UnitPrice > 500);
+
+            if (result == null)
+                Console.WriteLine("No product costs more than $500.");
+            else
+                Console.WriteLine(result);
+
+            #endregion
+
 
             //foreach (var item in result)
             //    Console.WriteLine(item);
