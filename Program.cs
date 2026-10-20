@@ -146,13 +146,19 @@ namespace LINQ_02
             #endregion
 
             #region 18. Generate a multiplication table row for 7
-            var result = Enumerable.Range(1, 10).Select(i => $"7 x {i} = {7 * i}");
+            //var result = Enumerable.Range(1, 10).Select(i => $"7 x {i} = {7 * i}");
 
-            foreach (var line in result)
-                Console.WriteLine(line);
+            //foreach (var line in result)
+            //    Console.WriteLine(line);
+
             #endregion
 
+            #region 19. Generate even numbers between 1 and 30.
+            var result = Enumerable.Range(1, 30).Where(n => n % 2 == 0);
 
+            Console.WriteLine(string.Join(", ", result));
+
+            #endregion
             //foreach (var item in result)
             //    Console.WriteLine(item);
         }
